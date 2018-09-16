@@ -1,3 +1,4 @@
+mkdir setup && cd setup
 sudo apt update
 sudo apt upgrade -y
 
@@ -11,7 +12,7 @@ sudo add-apt-repository ppa:snwh/pulp
 
 sudo apt-get update
 
-sudo apt-get install paper-icon-theme
+sudo apt-get install paper-icon-theme -y
 
 # vim plugins
 # https://medium.com/@huntie/10-essential-vim-plugins-for-2018-39957190b7a9
@@ -54,12 +55,47 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 
 sudo apt-get install apt-transport-https
 sudo apt-get update
-sudo apt-get install code # or code-insiders
+sudo apt-get install code -y# or code-insiders
 
 # ZSH
 sudo apt-get install zsh -y
 chsh -s $(which zsh)
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-sudo apt-get install fonts-powerline
+sudo apt-get install fonts-powerline -y
+cp shmink.zsh-theme ~/.oh-my-zsh/themes 
+rm ~/.zshrc
+cp .zshrc ~
+source ~/.zshrc
 
+# snap
+sudo apt install snapd -y
 
+# spotify
+sudo snap install spotify
+snap run spotify
+
+# albert
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
+wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_18.04/Release.key -O Release.key
+sudo apt-key add - < Release.key
+sudo apt update
+sudo apt-get install albert -y
+
+# ristretto
+sudo apt install ristretto
+
+# dropbox
+sudo apt install dropbox -y
+
+# discord
+sudo snap install discord
+snap run discord
+
+# steam
+sudo apt install steam-installer -y
+
+# cleanup
+cd ..
+rm -rf setup
+
+echo "Done :)"
