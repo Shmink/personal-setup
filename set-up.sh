@@ -6,6 +6,13 @@ sudo apt-get install git vim xclip -y
 sudo apt-get install python-pip -y
 sudo apt-get install virtualbox vagrant -y
 
+# Repos
+sudo add-apt-repository ppa:snwh/pulp
+
+sudo apt-get update
+
+sudo apt-get install paper-icon-theme
+
 # vim plugins
 # https://medium.com/@huntie/10-essential-vim-plugins-for-2018-39957190b7a9
 
