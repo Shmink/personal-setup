@@ -62,9 +62,9 @@ sudo apt-get install zsh -y
 chsh -s $(which zsh)
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 sudo apt-get install fonts-powerline -y
-cp shmink.zsh-theme ~/.oh-my-zsh/themes 
+cp zsh/shmink.zsh-theme ~/.oh-my-zsh/themes 
 rm ~/.zshrc
-cp .zshrc ~
+cp zsh/.zshrc ~
 source ~/.zshrc
 
 # snap
@@ -80,9 +80,20 @@ wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu
 sudo apt-key add - < Release.key
 sudo apt update
 sudo apt-get install albert -y
+cp albert/albert.conf ~/.config/albert/
 
 # ristretto
-sudo apt install ristretto
+sudo apt install ristretto tumbler -y
+
+# mpv
+sudo apt install mpv -y
+echo "loop=yes" > ~/.config/mpv/mpv.conf
+
+# shutter
+sudo apt install shutter -y
+
+# gthumb
+sudo apt install gthumb -y
 
 # dropbox
 sudo apt install dropbox -y
