@@ -5,7 +5,7 @@ sudo apt upgrade -y
 sudo apt-get install mint-meta-codecs -y
 sudo apt-get install git vim xclip -y
 sudo apt-get install python-pip -y
-sudo apt-get install virtualbox vagrant -y
+
 
 # Repos
 sudo add-apt-repository ppa:snwh/pulp
@@ -23,6 +23,7 @@ git config --global user.email
 git config --global core.editor vim
 
 # Elixir
+sudo apt-get install erlang -y
 sudo apt-get install elixir -y
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.5.1
 echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
@@ -55,7 +56,15 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 
 sudo apt-get install apt-transport-https
 sudo apt-get update
-sudo apt-get install code -y# or code-insiders
+sudo apt-get install code -y
+
+# vagrant
+sudo apt-get install virtualbox vagrant -y
+vagrant plugin install omnibus
+vagrant plugin install vagrant-omnibus
+
+# dbeaver (sql viewer)
+sudo apt install dbeaver-ce -y
 
 # ZSH
 sudo apt-get install zsh -y
@@ -109,4 +118,6 @@ sudo apt install steam-installer -y
 cd ..
 rm -rf setup
 
-echo "Done :)"
+echo "Done :) Rebooting now"
+
+sudo reboot now
