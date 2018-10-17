@@ -7,4 +7,4 @@ jobs:
       - checkout
       - run:
           name: Run
-          command: sudo ./set-up.sh
+          command: ./set-up.sh
