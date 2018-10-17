@@ -1,3 +1,4 @@
+#!/bin/sh
 mkdir setup && cd setup
 sudo apt update
 sudo apt upgrade -y
