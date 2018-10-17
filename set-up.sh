@@ -28,14 +28,14 @@ git config --global core.editor "vim"
 # Elixir
 apt-get install erlang -y
 apt-get install elixir -y
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.5.1
-echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
-echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
-reset
-asdf plugin-add elixir
-asdf install elixir 1.7.3
-asdf global elixir 1.7.3
-asdf plugin-update --all
+# git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.5.1
+# echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+# echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
+# reset
+# asdf plugin-add elixir
+# asdf install elixir 1.7.3
+# asdf global elixir 1.7.3
+# asdf plugin-update --all
 
 # Repos
 
