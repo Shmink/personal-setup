@@ -1,10 +1,12 @@
 mkdir setup && cd setup
 sudo apt update
 sudo apt upgrade -y
+sudo ubuntu-drivers autoinstall -y
 
 sudo apt-get install mint-meta-codecs -y
 sudo apt-get install git vim xclip -y
 sudo apt-get install python-pip -y
+sudo apt-get install tldr -y
 
 
 # Repos
@@ -20,7 +22,7 @@ sudo apt-get install paper-icon-theme -y
 # git config
 git config --global user.name 
 git config --global user.email
-git config --global core.editor vim
+git config --global core.editor "vim"
 
 # Elixir
 sudo apt-get install erlang -y
@@ -113,6 +115,9 @@ snap run discord
 
 # steam
 sudo apt install steam-installer -y
+
+# LaTeX
+sudo apt install texlive texstudio -y
 
 # cleanup
 cd ..
