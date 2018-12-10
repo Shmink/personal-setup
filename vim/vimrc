@@ -1,0 +1,13 @@
+so ~/.vim/plugins.vim
+
+set encoding=utf-8
+syntax on
+filetype plugin indent on
+
+set number
+set tabstop=2
+set colorcolumn=100
+
+
+
+map <C-o> :NERDTreeToggle<CR>
