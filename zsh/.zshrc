@@ -24,8 +24,9 @@ man() {
 # Powerlevel9k - Inspiration from https://github.com/bhilburn/powerlevel9k/wiki/Show-Off-Your-Config#andreas-config
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-# Show OS info when opening a new terminal
+# Show OS info when opening a new terminal - and iexhistory
 neofetch
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Font mode for powerlevel9k
 POWERLEVEL9K_MODE="nerdfont-complete"
@@ -208,6 +209,8 @@ alias iexhistory="export ERL_AFLAGS=\"-kernel shell_history enabled\""
 alias c="code ."
 alias helixpull="~/.oh-my-zsh/helix-pull.sh"
 alias ls="colorls"
+alias ll="ls -a -l"
+alias la="ls -a"
 #
 export PATH="/usr/local/opt/node@8/bin:$PATH"
 
