@@ -3,13 +3,110 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/tom/.oh-my-zsh"
-#export ERL_AFLAGS="-kernel shell_history enabled"
+export IEXhistory="export ERL_AFLAGS=\"-kernel shell_history enabled\""
+
+# Coloured man pages using less as pager
+man() {
+    env \
+	      LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+	      LESS_TERMCAP_md=$(printf "\e[1;31m") \
+	      LESS_TERMCAP_me=$(printf "\e[0m") \
+	      LESS_TERMCAP_se=$(printf "\e[0m") \
+	      LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+	      LESS_TERMCAP_ue=$(printf "\e[0m") \
+	      LESS_TERMCAP_us=$(printf "\e[1;36m") \
+	      man "$@"
+}
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# POWERLEVEL9K_MODE='awesome-patched'
-ZSH_THEME="shmink"
+# Powerlevel9k - Inspiration from https://github.com/bhilburn/powerlevel9k/wiki/Show-Off-Your-Config#andreas-config
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+# Show OS info when opening a new terminal
+neofetch
+
+# Font mode for powerlevel9k
+POWERLEVEL9K_MODE="nerdfont-complete"
+
+# Prompt settings
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%K{white}%k"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{green}%F{black} \uf155 %f%F{green}%k\ue0b0%f "
+
+# Separators
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\ue0b0'
+POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$'\ue0b1'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\ue0b2'
+POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=$'\ue0b7'
+
+# Dir colours
+POWERLEVEL9K_DIR_HOME_BACKGROUND='yellow'
+POWERLEVEL9K_DIR_HOME_FOREGROUND='black'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='yellow'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='black'
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='yellow'
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='black'
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+
+# OS segment
+POWERLEVEL9K_OS_ICON_BACKGROUND='black'
+POWERLEVEL9K_LINUX_ICON='%F{cyan} \uf303 %F{white} arch %F{cyan}linux%f'
+
+# VCS icons
+POWERLEVEL9K_VCS_GIT_ICON=$'\uf1d2 '
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uf113 '
+POWERLEVEL9K_VCS_GIT_GITLAB_ICON=$'\uf296 '
+POWERLEVEL9K_VCS_BRANCH_ICON=$''
+POWERLEVEL9K_VCS_STAGED_ICON=$'\uf055'
+POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uf421'
+POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uf00d'
+POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\uf0ab '
+POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\uf0aa '
+POWERLEVEL9K_SHOW_CHANGESET="true"
+POWERLEVEL9K_CHANGESET_HASH_LENGTH="6"
+
+# VCS colours
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='blue'
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='black'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='green'
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='black'
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
+
+# VCS CONFIG
+POWERLEVEL9K_SHOW_CHANGESET=false
+
+# Status
+POWERLEVEL9K_OK_ICON=$'\uf164'
+POWERLEVEL9K_FAIL_ICON=$'\uf165'
+POWERLEVEL9K_CARRIAGE_RETURN_ICON=$'\uf165'
+
+# Battery
+#POWERLEVEL9K_BATTERY_LOW_FOREGROUND='red'
+#POWERLEVEL9K_BATTERY_CHARGING_FOREGROUND='blue'
+#POWERLEVEL9K_BATTERY_CHARGED_FOREGROUND='green'
+#POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND='blue'
+#POWERLEVEL9K_BATTERY_VERBOSE=true
+
+
+# User with skull
+user_with_skull() {
+    echo -n "\ufb8a $(whoami)"
+}
+POWERLEVEL9K_CUSTOM_USER="user_with_skull"
+
+# Command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Command execution time stamp shown in the history command output.
+HIST_STAMPS="dd/mm/yyyy"
+
+# Prompt elements
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_user os_icon dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
 
 # Set list of themes to load
 # Settin gthis variable when ZSH_THEME=random
@@ -68,15 +165,13 @@ plugins=(
 		sudo 
 		fasd 
 		history 
-		taskwarrior 
-		tmux 
-		tmuxinator 
 		zsh-autosuggestions
 	)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/local/opt/asdf/asdf.sh
+source $(dirname $(gem which colorls))/tab_complete.sh
 
 # User configuration
 
@@ -112,7 +207,7 @@ alias example="cowsay \"This is a cool example!\""
 alias iexhistory="export ERL_AFLAGS=\"-kernel shell_history enabled\""
 alias c="code ."
 alias helixpull="~/.oh-my-zsh/helix-pull.sh"
-
+alias ls="colorls"
 #
 export PATH="/usr/local/opt/node@8/bin:$PATH"
 
@@ -131,3 +226,13 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+function git-delete-branch() {
+	if [ "$1" != "" ]
+	then
+			git push --delete origin "$1"
+			git branch -d "$1"
+	else
+			echo "Need a branch name."
+	fi
+}
