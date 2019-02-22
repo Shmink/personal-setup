@@ -2,6 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/Shmink/personal-setup.svg?style=svg)](https://circleci.com/gh/Shmink/personal-setup)
 
+
 Feel free to use this. Have a look through it first and edit where appropriate. 
 There will still need to be some manual things to be done but this should at least be the bulk of it.
 
