@@ -12,3 +12,4 @@ cd personal-setup
 chmod +x set-up.sh
 sudo ./set-up.sh
 ```
+
